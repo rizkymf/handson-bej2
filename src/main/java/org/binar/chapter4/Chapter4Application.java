@@ -8,14 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Chapter4Application {
 
-//    @Autowired
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(Chapter4Application.class, args);
 //		PaymentService paymentService = new PaymentService();
 //		paymentService.handleIncomingPayment();
-		System.out.println("Hello world!");
+//		System.out.println("Hello world!");
 	}
 
 }
