@@ -24,4 +24,8 @@ public class UserActive {
     private String email;
 
     private String nomorHape;
+
+    @Transient
+    private boolean state;
+
 }
