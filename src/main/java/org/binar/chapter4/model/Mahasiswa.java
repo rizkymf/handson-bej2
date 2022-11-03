@@ -9,8 +9,9 @@ import javax.persistence.*;
 @Setter
 @Entity
 public class Mahasiswa {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idMahasiswa;
 
     private String nama;
