@@ -1,17 +1,15 @@
-package org.binar.chapter4.menu;
+package org.binar.chapter4.service;
 
 import org.binar.chapter4.model.Mahasiswa;
 import org.binar.chapter4.repository.MahasiswaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Scanner;
 
 @Service
-public class Menu {
+public class MenuService {
 
     @Autowired
     MahasiswaRepository mahasiswaRepository;
@@ -27,7 +25,7 @@ public class Menu {
         switch(input) {
             case 1:
                 inputMahasiswa(scan);
-                System.exit(0);
+                init(scan);
                 break;
             case 2:
 //                deleteMahasiswa(scan);
@@ -44,18 +42,14 @@ public class Menu {
         Mahasiswa mahasiswa = new Mahasiswa();
         System.out.print("Nama : ");
         String nama = scan.nextLine();
-//        scan.next();
         mahasiswa.setNama(nama);
 
         System.out.print("Jurusan : ");
         String jurusan = scan.nextLine();
-//        scan.next();
         mahasiswa.setJurusan(jurusan);
-//        System.out.println();
 
         System.out.print("Kode jurusan : ");
         String kodeJurusan = scan.nextLine();
-//        scan.next();
         mahasiswa.setKodeJurusan(kodeJurusan);
 
         Integer angkatan = LocalDate.now().getYear();

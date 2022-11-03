@@ -1,7 +1,6 @@
 package org.binar.chapter4;
 
-import org.binar.chapter4.menu.Menu;
-import org.binar.chapter4.service.PaymentService;
+import org.binar.chapter4.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,12 +12,13 @@ import java.util.Scanner;
 public class Chapter4Application implements CommandLineRunner {
 
 	@Autowired
-	Menu menu;
+	MenuService menu;
 
 	@Override
 	public void run(String... args) throws Exception {
 		Scanner scan = new Scanner(System.in);
 		menu.init(scan);
+		scan.close();
 	}
 
 	public static void main(String[] args) {
