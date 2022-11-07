@@ -16,9 +16,9 @@ public class Chapter4Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Scanner scan = new Scanner(System.in);
-		menu.init(scan);
-		scan.close();
+//		Scanner scan = new Scanner(System.in);
+//		menu.init(scan);
+//		scan.close();
 	}
 
 	public static void main(String[] args) {

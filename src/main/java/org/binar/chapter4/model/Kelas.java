@@ -20,6 +20,6 @@ public class Kelas {
 
     private String pengajar;
 
-    @OneToMany
+    @OneToMany(mappedBy = "id")
     private List<UserActive> murid;
 }
