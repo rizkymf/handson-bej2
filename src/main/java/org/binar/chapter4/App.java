@@ -6,10 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Scanner;
-
 @SpringBootApplication
-public class Chapter4Application implements CommandLineRunner {
+public class App implements CommandLineRunner {
 
 	@Autowired
 	MenuService menu;
@@ -22,7 +20,7 @@ public class Chapter4Application implements CommandLineRunner {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(Chapter4Application.class, args);
+		SpringApplication.run(App.class, args);
 	}
 
 }
