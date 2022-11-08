@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/demo")
 public class DemoController {
 
     @Autowired
@@ -77,6 +78,7 @@ public class DemoController {
         return new ResponseEntity(resp, HttpStatus.OK);
     }
 
+    // contoh post dengan body dan header
     @PostMapping(value = "/new_mahasiswa")
     public ResponseEntity newMahasiswa(@RequestBody MahasiswaRequest mahasiswaRequest,
                                        @RequestHeader("Kelas") String kelas) {
