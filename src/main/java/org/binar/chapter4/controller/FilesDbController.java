@@ -3,7 +3,9 @@ package org.binar.chapter4.controller;
 import org.binar.chapter4.model.FilesDb;
 import org.binar.chapter4.service.IFilesDbService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,6 +36,8 @@ public class FilesDbController {
     @GetMapping("/download")
     public ResponseEntity downloadFile(@RequestParam("id") Long id) {
         FilesDb filesDb = filesDbService.downloadFile(id);
-        return new ResponseEntity(filesDb.getFile(), HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        return ResponseEntity.ok().headers(headers).body(filesDb.getFile());
     }
 }
