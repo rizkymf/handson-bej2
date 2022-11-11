@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tiket_mahasiswa" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6efbf22b-83fa-4536-990e-dc46edc96646">
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <field name="namaMahasiswa" class="java.lang.String"/>
+    <field name="jurusan" class="java.lang.String"/>
+    <field name="angkatan" class="java.lang.String"/>
+    <field name="test" class="java.lang.String"/>
+<!--    <field name="testBarcode" class="java.lang.String"/>-->
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="90" splitType="Stretch">
+            <image hAlign="Center">
+                <reportElement x="352" y="10" width="97" height="70" uuid="51113cf9-615c-4088-8330-754a857314fe"/>
+                <imageExpression><![CDATA["E:/Binar/logoBinar.png"]]></imageExpression>
+            </image>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="35" splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="61" splitType="Stretch">
+            <staticText>
+                <reportElement x="171" y="10" width="460" height="40" uuid="9f83f77a-063e-421e-ba44-e63777a9158a"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="25"/>
+                </textElement>
+                <text><![CDATA[MAHASISWA BINAR ACADEMY]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="125" splitType="Stretch">
+            <textField>
+                <reportElement x="172" y="10" width="458" height="40" uuid="76504890-ef7b-4c0c-895c-ea02aea80abd"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="22"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{namaMahasiswa}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="233" y="50" width="337" height="30" uuid="1c9dd1c1-3c80-41c3-991c-8d3f319a5ae8"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="21"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{jurusan}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="152" y="90" width="498" height="30" uuid="f9a2f9ce-9588-42a5-b008-9efa77266bc7"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="22"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{angkatan}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="53" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band height="50" splitType="Stretch">
+            <textField>
+                <reportElement x="351" y="10" width="100" height="30" uuid="1a104129-eea2-4a90-a842-51e5a8bc78b4"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="15"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{test}]]></textFieldExpression>
+            </textField>
+<!--            <componentElement>-->
+<!--                <reportElement x="590" y="0" width="97" height="49" uuid="5d5dcbf2-2f4c-4830-ab9e-2b01eea8b074"/>-->
+<!--                <jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">-->
+<!--                    <jr:codeExpression><![CDATA[$F{testBarcode}]]></jr:codeExpression>-->
+<!--                </jr:QRCode>-->
+<!--            </componentElement>-->
+        </band>
+    </summary>
+</jasperReport>

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.binar</groupId>
-	<artifactId>chapter4</artifactId>
+	<artifactId>chapter5</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Chapter 4</name>
-	<description>Demo project for Chapter 4</description>
+	<name>Chapter 5</name>
+	<description>Demo project for Chapter 5</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
