@@ -8,5 +8,6 @@ public interface IMahasiswaService {
 
     void newMahasiswa(Mahasiswa mahasiswa) throws Exception;
     Mahasiswa searchMahasiswa(String nama);
+    Mahasiswa searchMahasiswaWithAngkatan(String nama, Integer angkatan);
 
 }

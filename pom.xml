@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>org.binar</groupId>
 	<artifactId>chapter5</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.5</version>
 	<name>Chapter 5</name>
 	<description>Demo project for Chapter 5</description>
 	<properties>

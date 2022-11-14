@@ -1,21 +1,27 @@
 package org.binar.chapter5.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.binar.chapter5.model.Mahasiswa;
+import org.binar.chapter5.model.request.MahasiswaRequest;
+import org.binar.chapter5.model.response.MahasiswaResponse;
 import org.binar.chapter5.service.IMahasiswaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.validation.Valid;
+import java.time.LocalDate;
+import java.util.*;
 
 @RestController
 @RequestMapping("/mahasiswa")
@@ -27,6 +33,13 @@ public class MahasiswaController {
     @GetMapping("/test1")
     public String test1() {
         return "hallo test1 dari mahasiswa";
+    }
+
+    @GetMapping("/search_mahasiswa")
+    public ResponseEntity searchMahasiswa(@RequestParam("nama") String nama,
+                                          @RequestParam("angkatan") Integer angkatan) {
+        Mahasiswa mahasiswa = mahasiswaService.searchMahasiswaWithAngkatan(nama, angkatan);
+        return new ResponseEntity(mahasiswa, HttpStatus.OK);
     }
 
     @GetMapping("/nametag")
@@ -61,5 +74,36 @@ public class MahasiswaController {
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Operation(summary = "untuk menambahkan mahasiswa baru ke dalam sistem")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "return yang didapat jika request success",
+                    content = {@Content(mediaType = "application/json", schema = @Schema(implementation = MahasiswaResponse.class))})
+    })
+    @PostMapping(value = "/new_mahasiswa")
+    public ResponseEntity newMahasiswa(@Valid @RequestBody MahasiswaRequest[] mahasiswaRequest,
+                                       @Schema(example = "BEJ 2 Synrgy") @Nullable @RequestHeader("Kelas") String kelas) {
+        Map<String, Object> resp = new HashMap<>();
+        resp.put("message", "insert success!");
+        resp.put("kelas", kelas);
+
+        try {
+            for(int i = 0; i < mahasiswaRequest.length; i++) {
+                Mahasiswa mahasiswa = new Mahasiswa();
+                mahasiswa.setIdMahasiswa(Integer.valueOf(LocalDate.now().getYear()
+                    + String.valueOf(mahasiswaRequest[i].getKodeJurusan()) + i)); // id nya asal, TODO kasih logic
+                mahasiswa.setNama(mahasiswaRequest[i].getNama());
+                mahasiswa.setAngkatan(mahasiswaRequest[i].getAngkatan());
+                mahasiswa.setJurusan(mahasiswaRequest[i].getJurusan());
+                mahasiswa.setKodeJurusan(mahasiswaRequest[i].getKodeJurusan());
+                mahasiswaService.newMahasiswa(mahasiswa);
+            }
+            return new ResponseEntity(resp, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            resp.put("message", "insert gagal!, dikarenakan : " + e.getMessage());
+            return new ResponseEntity(resp, HttpStatus.BAD_GATEWAY);
+        }
+
     }
 }

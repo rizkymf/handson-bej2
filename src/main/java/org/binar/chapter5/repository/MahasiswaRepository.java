@@ -24,6 +24,9 @@ public interface MahasiswaRepository extends JpaRepository<Mahasiswa, Integer> {
     @Query(value = "select * from mahasiswa where angkatan = ?1", nativeQuery = true)
     public List<Mahasiswa> findMahasiswaByAngkatanNative(Integer angkatan);
 
+    @Query(value = "select * from mahasiswa where nama = :nama and angkatan = :angkatan", nativeQuery = true)
+    List<Mahasiswa> findMahasiswaByNamaAndAngkatan(@Param("nama") String nama, @Param("angkatan") Integer angkatan);
+
     @Query(value = "select * from mahasiswa where nama = :nama", nativeQuery = true)
     public List<Mahasiswa> findMahasiswaByNama(@Param("nama") String nama);
 

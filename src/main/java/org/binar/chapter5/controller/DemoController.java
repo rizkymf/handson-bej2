@@ -110,8 +110,5 @@ public class DemoController {
             resp.put("message", "insert gagal!, dikarenakan : " + e.getMessage());
             return new ResponseEntity(resp, HttpStatus.BAD_GATEWAY);
         }
-
     }
-
-
 }

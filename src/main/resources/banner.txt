@@ -21,4 +21,4 @@
          ~~                       \/____/                  \/____/                  \/____/                  \|___|
 
 
-    ::: Demo Hands On :::
+    ::: Demo Hands On (v${application.version}) :::

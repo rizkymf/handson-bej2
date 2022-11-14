@@ -20,12 +20,16 @@ public class FilesDbController {
     IFilesDbService filesDbService;
 
     @PostMapping("/upload")
-    public ResponseEntity uploadFile(@RequestParam("file") MultipartFile multipartFile) {
-        FilesDb filesDb = new FilesDb();
+    public ResponseEntity uploadFile(@RequestParam("file") MultipartFile[] multipartFile) {
         try {
-            filesDb.setNamaFile(multipartFile.getOriginalFilename());
-            filesDb.setFile(multipartFile.getBytes());
-            String result = filesDbService.uploadFile(filesDb);
+            String result = "";
+            for(int i = 0; i < multipartFile.length; i++) {
+                FilesDb filesDb = new FilesDb();
+                filesDb.setNamaFile(multipartFile[i].getOriginalFilename());
+                filesDb.setFile(multipartFile[i].getBytes());
+                result = filesDbService.uploadFile(filesDb);
+                if(!result.equalsIgnoreCase("Upload success")) throw new IOException();
+            }
             return new ResponseEntity(result, HttpStatus.OK);
         } catch(IOException ioe) {
             return new ResponseEntity(ioe.getMessage(), HttpStatus.BAD_REQUEST);
@@ -36,7 +40,7 @@ public class FilesDbController {
     public ResponseEntity downloadFile(@RequestParam("id") Long id) {
         FilesDb filesDb = filesDbService.downloadFile(id);
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentType(MediaType.IMAGE_PNG);
         return ResponseEntity.ok().headers(headers).body(filesDb.getFile());
     }
 }
