@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.fonts.SimpleFontFamily;
 import org.binar.chapter5.model.Mahasiswa;
 import org.binar.chapter5.model.request.MahasiswaRequest;
 import org.binar.chapter5.model.response.MahasiswaResponse;
@@ -82,28 +83,60 @@ public class MahasiswaController {
                     content = {@Content(mediaType = "application/json", schema = @Schema(implementation = MahasiswaResponse.class))})
     })
     @PostMapping(value = "/new_mahasiswa")
-    public ResponseEntity newMahasiswa(@Valid @RequestBody MahasiswaRequest[] mahasiswaRequest,
+    public ResponseEntity newMahasiswa(@Valid @RequestBody MahasiswaRequest mahasiswaRequest,
                                        @Schema(example = "BEJ 2 Synrgy") @Nullable @RequestHeader("Kelas") String kelas) {
         Map<String, Object> resp = new HashMap<>();
         resp.put("message", "insert success!");
         resp.put("kelas", kelas);
 
         try {
-            for(int i = 0; i < mahasiswaRequest.length; i++) {
-                Mahasiswa mahasiswa = new Mahasiswa();
-                mahasiswa.setIdMahasiswa(Integer.valueOf(LocalDate.now().getYear()
-                    + String.valueOf(mahasiswaRequest[i].getKodeJurusan()) + i)); // id nya asal, TODO kasih logic
-                mahasiswa.setNama(mahasiswaRequest[i].getNama());
-                mahasiswa.setAngkatan(mahasiswaRequest[i].getAngkatan());
-                mahasiswa.setJurusan(mahasiswaRequest[i].getJurusan());
-                mahasiswa.setKodeJurusan(mahasiswaRequest[i].getKodeJurusan());
-                mahasiswaService.newMahasiswa(mahasiswa);
-            }
+            Mahasiswa mahasiswa = new Mahasiswa();
+            mahasiswa.setIdMahasiswa(Integer.valueOf(LocalDate.now().getYear()
+                    + String.valueOf(mahasiswaRequest.getKodeJurusan()))); // id nya asal, TODO kasih logic
+            mahasiswa.setNama(mahasiswaRequest.getNama());
+            mahasiswa.setAngkatan(mahasiswaRequest.getAngkatan());
+            mahasiswa.setJurusan(mahasiswaRequest.getJurusan());
+            mahasiswa.setKodeJurusan(mahasiswaRequest.getKodeJurusan());
+            mahasiswaService.newMahasiswa(mahasiswa);
             return new ResponseEntity(resp, HttpStatus.ACCEPTED);
         } catch (Exception e) {
+            e.printStackTrace();
             resp.put("message", "insert gagal!, dikarenakan : " + e.getMessage());
             return new ResponseEntity(resp, HttpStatus.BAD_GATEWAY);
         }
 
+    }
+
+    @GetMapping("/invoice_pembayaran")
+    public void generateInvoiceBayar(HttpServletResponse response,
+                                @RequestParam("nama") String nama) {
+        try {
+            JasperReport sourceFileName = JasperCompileManager.compileReport
+                    (ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX + "demoReport.jrxml").getAbsolutePath());
+
+            // creating our list of beans
+            List<Map<String,Object>> dataMahasiswa = new ArrayList<>();
+            Map<String, Object> mhs = new HashMap<>();
+            Mahasiswa mahasiswa = mahasiswaService.searchMahasiswa(nama);
+            mhs.put("namaMahasiswa", mahasiswa.getNama());
+            mhs.put("idMahasiswa", mahasiswa.getIdMahasiswa());
+            mhs.put("semester", "5");
+            mhs.put("biayaKuliah", "5.000.000");
+            dataMahasiswa.add(mhs);
+
+            // creating datasource from bean list
+            JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(dataMahasiswa);
+            Map<String,Object> parameters = new HashMap<>();
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(sourceFileName, parameters, beanColDataSource);
+
+            response.setContentType("application/pdf");
+            response.addHeader("Content-Disposition", "inline; filename=nametag.pdf;");
+
+            JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }
