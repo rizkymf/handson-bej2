@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.binar</groupId>
-	<artifactId>chapter5</artifactId>
-	<version>0.5</version>
-	<name>Chapter 5</name>
-	<description>Demo project for Chapter 5</description>
+	<artifactId>chapter6</artifactId>
+	<version>0.6</version>
+	<name>Chapter 6</name>
+	<description>Demo project for Chapter 6</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -54,7 +54,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 			<version>2.7.5</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -62,6 +61,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
