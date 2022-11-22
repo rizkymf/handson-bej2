@@ -1,4 +1,4 @@
-package org.binar.chapter5.controller;
+package org.binar.chapter6.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -8,10 +8,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.fonts.SimpleFontFamily;
-import org.binar.chapter5.model.Mahasiswa;
-import org.binar.chapter5.model.request.MahasiswaRequest;
-import org.binar.chapter5.model.response.MahasiswaResponse;
-import org.binar.chapter5.service.IMahasiswaService;
+import org.binar.chapter6.model.Mahasiswa;
+import org.binar.chapter6.model.request.MahasiswaRequest;
+import org.binar.chapter6.model.response.MahasiswaResponse;
+import org.binar.chapter6.service.IMahasiswaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

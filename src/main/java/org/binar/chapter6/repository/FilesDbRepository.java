@@ -1,6 +1,6 @@
-package org.binar.chapter5.repository;
+package org.binar.chapter6.repository;
 
-import org.binar.chapter5.model.FilesDb;
+import org.binar.chapter6.model.FilesDb;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

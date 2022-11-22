@@ -1,7 +1,8 @@
-package org.binar.chapter5.service;
+package org.binar.chapter6.service;
 
-import org.binar.chapter5.model.FilesDb;
-import org.binar.chapter5.repository.FilesDbRepository;
+import org.binar.chapter6.service.IFilesDbService;
+import org.binar.chapter6.model.FilesDb;
+import org.binar.chapter6.repository.FilesDbRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

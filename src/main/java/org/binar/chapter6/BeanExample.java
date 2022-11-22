@@ -1,4 +1,4 @@
-package org.binar.chapter5;
+package org.binar.chapter6;
 
 import org.binar.chapter6.DemoGeneric;
 import org.springframework.context.annotation.Bean;

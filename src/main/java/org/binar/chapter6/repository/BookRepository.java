@@ -1,7 +1,7 @@
-package org.binar.chapter5.repository;
+package org.binar.chapter6.repository;
 
-import org.binar.chapter5.model.Book;
-import org.binar.chapter5.model.BookId;
+import org.binar.chapter6.model.Book;
+import org.binar.chapter6.model.BookId;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

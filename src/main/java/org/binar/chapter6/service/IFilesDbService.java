@@ -1,6 +1,6 @@
-package org.binar.chapter5.service;
+package org.binar.chapter6.service;
 
-import org.binar.chapter5.model.FilesDb;
+import org.binar.chapter6.model.FilesDb;
 
 public interface IFilesDbService {
     String uploadFile(FilesDb filesDb);

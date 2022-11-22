@@ -1,4 +1,4 @@
-package org.binar.chapter5.model;
+package org.binar.chapter6.model;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package org.binar.chapter5.model.request;
+package org.binar.chapter6.model.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

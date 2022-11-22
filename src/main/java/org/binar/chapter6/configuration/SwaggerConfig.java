@@ -1,4 +1,4 @@
-package org.binar.chapter5.configuration;
+package org.binar.chapter6.configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

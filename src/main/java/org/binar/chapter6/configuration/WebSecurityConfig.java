@@ -18,8 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
-        prePostEnabled = true
-)
+        prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsServiceImpl userDetailsService;
@@ -53,16 +52,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/**").permitAll()
-//                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-//                .antMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/**").permitAll()
-//                .antMatchers("/api/test/**").permitAll()
-//                .antMatchers("/users/admin/**").hasAuthority(ERole.ADMIN.name())
-//                .antMatchers("/users/customer/**").hasAuthority(ERole.CUSTOMER.name())
-//                .antMatchers("/users/public/**").hasAnyAuthority(ERole.ADMIN.name(), ERole.CUSTOMER.name())
+                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/test/**").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
     }
 
 }

@@ -1,4 +1,4 @@
-package org.binar.chapter5.model.response;
+package org.binar.chapter6.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
