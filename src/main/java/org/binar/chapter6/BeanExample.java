@@ -1,7 +1,11 @@
 package org.binar.chapter5;
 
+import org.binar.chapter6.DemoGeneric;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 public class BeanExample {
@@ -21,5 +25,15 @@ public class BeanExample {
     public String method3() {
         System.out.println("sedangkan yg ini method 3");
         return "non bean";
+    }
+
+
+    public void useGeneric() {
+        DemoGeneric<String> demoGeneric = new DemoGeneric<>();
+        List<Integer> integerList = new ArrayList<>();
+        demoGeneric.printList(integerList);
+
+        List<String> stringList = new ArrayList<>();
+        demoGeneric.printList(stringList);
     }
 }
