@@ -103,7 +103,7 @@ public class LoginController {
         Set<Role> roles = new HashSet<>();
 
         if(strRoles == null) {
-            Role role = roleRepository.findByName(ERoles.ROLE_CUSTOMER)
+            Role role = roleRepository.findByName(ERoles.CUSTOMER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found"));
             roles.add(role);
         } else {

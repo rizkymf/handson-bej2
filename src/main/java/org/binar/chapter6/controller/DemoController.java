@@ -28,6 +28,7 @@ public class DemoController {
     @Autowired
     IMahasiswaService mahasiswaService;
 
+
     @GetMapping("/test1")
     public void testController() {
         System.out.println("test controller coy");

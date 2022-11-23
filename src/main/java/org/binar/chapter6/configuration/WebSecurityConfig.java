@@ -1,5 +1,6 @@
 package org.binar.chapter6.configuration;
 
+import org.binar.chapter6.model.enumerations.ERoles;
 import org.binar.chapter6.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -52,12 +53,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/test/**").permitAll()
+                .authorizeRequests()
+                    .antMatchers("/api/auth/**").permitAll()
+                    .antMatchers("/mahasiswa/**").hasAuthority(ERoles.CUSTOMER.name())
+                    .antMatchers("/files/**").hasAuthority(ERoles.ADMIN.name())
+//                .antMatchers("/api/test/**").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-
     }
 
 }
