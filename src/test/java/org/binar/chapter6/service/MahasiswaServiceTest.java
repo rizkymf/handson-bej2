@@ -1,16 +1,13 @@
-package org.binar.chapter5.service;
+package org.binar.chapter6.service;
 
-import org.binar.chapter5.model.Mahasiswa;
-import org.binar.chapter5.repository.MahasiswaRepository;
+import org.binar.chapter6.model.Mahasiswa;
+import org.binar.chapter6.repository.MahasiswaRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,13 +1,13 @@
-package org.binar.chapter5.controller;
+package org.binar.chapter6.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import org.binar.chapter5.model.Mahasiswa;
-import org.binar.chapter5.repository.MahasiswaRepository;
-import org.binar.chapter5.service.IMahasiswaService;
-import org.binar.chapter5.service.MahasiswaService;
+import org.binar.chapter6.model.Mahasiswa;
+import org.binar.chapter6.repository.MahasiswaRepository;
+import org.binar.chapter6.service.IMahasiswaService;
+import org.binar.chapter6.service.MahasiswaService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

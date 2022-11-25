@@ -1,4 +1,4 @@
-package org.binar.chapter5;
+package org.binar.chapter6;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

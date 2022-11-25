@@ -14,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,14 +30,16 @@ public class DemoController {
     IMahasiswaService mahasiswaService;
 
 
+    @PreAuthorize(value = "hasAuthority('CUSTOMER')")
     @GetMapping("/test1")
     public void testController() {
-        System.out.println("test controller coy");
+//        System.out.println("test controller coy");
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(method = RequestMethod.GET, value = "/test2")
     public String test2() {
-        System.out.println("test 2");
+//        System.out.println("test 2");
         return "test 2 success!";
     }
 

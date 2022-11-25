@@ -1,4 +1,4 @@
-package org.binar.chapter5.web;
+package org.binar.chapter6.web;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +12,7 @@ public class DemoRestTemplate {
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://catfact.ninja/fact";
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-        System.out.println(response);
+//        System.out.println(response);
 
         try {
             ObjectMapper objectMapper = new ObjectMapper();

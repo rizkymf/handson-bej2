@@ -83,7 +83,6 @@ public class LoginController {
 
     @PostMapping("/signup")
     public ResponseEntity<MessageResponse> registerUser(@Valid @RequestBody SignupRequest signupRequest) {
-        System.out.println("signup!");
         Boolean usernameExist = usersRepository.existsByUsername(signupRequest.getUsername());
         if(Boolean.TRUE.equals(usernameExist)) {
             return ResponseEntity.badRequest()

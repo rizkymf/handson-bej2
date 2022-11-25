@@ -20,7 +20,7 @@ public class DemoGeneric<T> {
 
     public void printList(List<?> datas) {
         datas.forEach(val -> {
-            System.out.println(val);
+//            System.out.println(val);
         });
     }
 

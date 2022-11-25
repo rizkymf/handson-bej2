@@ -1,4 +1,4 @@
-package org.binar.chapter5.repository;
+package org.binar.chapter6.repository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
