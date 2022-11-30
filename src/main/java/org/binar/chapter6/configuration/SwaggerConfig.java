@@ -15,7 +15,7 @@ public class SwaggerConfig {
                            @Value("v1.0.0") String appVersion) {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Binar API")
+                        .title("Bioskop API")
                         .version(appVersion)
                         .description(appDescription)
                         .termsOfService("http://swagger.io/terms")
